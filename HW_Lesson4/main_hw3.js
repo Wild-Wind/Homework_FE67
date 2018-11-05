@@ -1,15 +1,15 @@
 // Part 1. numPrompt 
-// var numPrompt = function () {
-//     var x = prompt('Input something', '');
-//         if (x === null) {
-//             return x;
-//         }
-//         if ((x >= 0) || (x < 0)) {
-//             return x;
-//         } 
-//         return "NaN";  
-// }
-// console.log(numPrompt());
+var numPrompt = function () {
+    var x = prompt('Input something', '');
+        if (x === null) {
+            return x;
+        }
+        if ((x >= 0) || (x < 0)) {
+            return x;
+        } 
+        return "NaN";  
+}
+console.log(numPrompt());
 
 // Part 2. myCalc
 var myCalc = function () {
@@ -35,22 +35,25 @@ var myCalc = function () {
 console.log(myCalc());
 
 // Part 3. mySlice (в работе)
-// var arr = [30, 51, 74, 106, 540, 356, 280, 859, 372];
+var arr = [30, 51, 74, 106, 540, 356, 280, 859, 372];
 
-// var mySlice = function (array, start, amount) {
-//     if (amount >= array.length) {
-//         console.warn('Столько ячеек не существует');
-//         return null;
-//     }
-//     if (amount <= start) {
-//         console.warn('Такого куска нет');
-//         return null;
-//     }
-//     for (var i = start; i < array.length; i++) {
-//         const element = array[i];
-        
-//     }
-//     return array.mySlice(start, amount);
-// }
-
-// console.log(mySlise(arr, 1, 3));
+var mySlice = function (array, start, amount) {
+    if (start >= array.length) {
+        console.warn('Столько ячеек не существует');
+        return null;
+    }
+    if ((start+amount) > array.length) {
+        console.warn('Такого куска нет');
+        return null;
+    }
+    if (start < 0 || amount < 0) {
+        console.warn('Введены некорректные данные');
+    }
+    var arrNew = new Array();
+       for (var i = start; i < (start + amount); i++) {
+           arrNew[i-start] = arr[i];
+       }      
+    return arrNew;
+}
+console.log(arr);
+console.log(mySlice(arr, 1, 5));
